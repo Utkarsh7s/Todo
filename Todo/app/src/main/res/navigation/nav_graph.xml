@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/groupFragment">
+
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="ca.georgian.todo.fragments.GroupFragment"
+        android:label="Groups"
+        tools:layout="@layout/fragment_group">
+        <action
+            android:id="@+id/action_groupFragment_to_todoFragment"
+            app:destination="@id/todoFragment"
+            app:popUpTo="@id/groupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoFragment"
+        android:name="ca.georgian.todo.fragments.TodoFragment"
+        android:label="Todos"
+        tools:layout="@layout/fragment_todo">
+        <action
+            android:id="@+id/action_todoFragment_to_todoDetailFragment"
+            app:destination="@id/todoDetailFragment"
+            app:popUpTo="@id/todoFragment" />
+        <argument
+            android:name="group"
+            app:argType="ca.georgian.todo.model.Group" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoDetailFragment"
+        android:name="ca.georgian.todo.fragments.TodoDetailFragment"
+        android:label="Create Todo"
+        tools:layout="@layout/fragment_todo_detail">
+        <argument
+            android:name="group"
+            app:argType="ca.georgian.todo.model.Group" />
+        <argument
+            android:name="todo"
+            android:defaultValue="@null"
+            app:argType="ca.georgian.todo.model.Todo"
+            app:nullable="true" />
+    </fragment>
+</navigation>
